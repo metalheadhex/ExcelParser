@@ -31,14 +31,14 @@ combined_df = pd.concat([pd.read_excel(file_path) for file_path in file_paths])
 
 # Remove duplicates based on the unique identifier column(s)
 combined_unique_df = combined_df.drop_duplicates(subset=unique_columns)
-combined_unique_df.to_excel(writer, sheet_name="Combined_Inventory", index=False)
+combined_unique_df.to_excel(writer, sheet_name="Combined_data", index=False)
 
 # Generate a consolidated graph chart of data counts and reporting
 chart_data = combined_unique_df.groupby('Reporting_System').size()
 chart_data.plot(kind='bar')
 plt.xlabel('Reporting System')
 plt.ylabel('Data Count')
-plt.title('Consolidated Agent Counts by Reporting System')
+plt.title('Consolidated data Counts by Reporting System')
 plt.savefig("consolidated_graph.png")  # Save the chart as an image file
 plt.close()
 
